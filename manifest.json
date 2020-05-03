@@ -1,0 +1,39 @@
+{
+	"manifest_version": 2,
+	"name": "Practice Timer",
+	"version": "2.3",
+	"permissions": [
+		"alwaysOnTopWindows",
+		"storage",
+		"serial",
+		"usb",
+		{
+			"usbDevices": [
+				{
+					"vendorId": 1659, 
+					"productId": 8963
+				}
+			]
+		}
+	],
+	"app": {
+		"background": {
+			"scripts": [
+				"jquery-3.4.1.min.js",
+				"jquery-ui.min.js",
+				"background.js"
+				
+			],
+			"pages" : [
+				"index.html"
+			]
+		}
+		
+	},
+	"icons": {
+		"16": "images/Timer16.png",
+		"48": "images/Timer48.png",
+		"128": "images/Timer128.png"
+	},
+	"minimum_chrome_version": "28"
+}

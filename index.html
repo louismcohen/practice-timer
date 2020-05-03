@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<meta charset="utf-8">
+ 	<link rel="stylesheet" href="hamburgers.css">
+ 	<link rel="stylesheet" href="jquery-ui.css">
+ 	<link rel="stylesheet" href="tabulator/tabulator_semantic-ui.min.css">
+ 	<link rel="stylesheet" href="practiceTimerStyles.css">
+
+ 	<script src="jquery-3.4.1.min.js"></script>
+ 	<script src="jquery-ui.min.js"></script>
+ 	<script src="jquery.actual.min.js"></script>
+ 	<script src="moment.js"></script>
+ 	<script src="script.js"></script>
+ 	<script src="tabulator/tabulator.min.js"></script>
+ 	<script src="tabulator/jquery_wrapper.min.js"></script>
+ 	<script src="xlsx.full.min.js"></script>
+ 	<script src="fontawesome.js"></script>
+
+ 	<title>Practice Timer</title>
+</head>
+<body>
+ 	<div class="app-header">
+ 		<button class="hamburger hamburger--elastic" id="setup-pane-button">
+ 			<span class="hamburger-box">
+ 				<span class="hamburger-inner"></span>
+ 			</span>
+ 		</button>
+ 		<table class="header-info">
+ 			<thead>
+	 			<tr>
+	 				<th>Runs</th>
+	 				<th>Average Time</th>
+	 				<th>Total Time</th>
+	 				<th>Total Time (est.)</th>
+	 				<th>End (est.)</th>
+	 				<th>Remaining Runs</th>
+	 				<th>Cones Hit</th>
+	 				<th>Complete</th>
+	 			</tr>
+	 		</thead>
+ 			<tbody>
+	 			<tr>
+	 				<td id="runs">0</td>
+	 				<td id="average-time"></td>
+	 				<td id="total-time"></td>
+	 				<td id="total-time-est"></td>
+	 				<td id="end-est"></td>
+	 				<td id="remaining-runs"></td>
+	 				<td id="cones-hit">0</td>
+	 				<td id="complete">0%</td>
+	 			</tr>
+	 		</tbody>
+ 		</table>
+ 	</div>
+
+
+<div class="main">
+ 	<div class="setup-pane">
+ 		<!-- <div class="setup-pane-header">Download Data<button id="download-excel-data" type="button">Download Excel File</button></div> -->
+
+ 		<div class="setup-pane-header collapsible">Settings</div>
+		<div class="setup-pane-content" id="setting-content">
+			<table class="setup-table" id="settings">
+				<tbody>
+					<tr>
+						<td>Date</td>
+						<td><input type="date" id="practice-date"></td>
+						<td>Timing Device</td>
+						<td id="timing-device-status">Not Found<div class="timing-device-status-icon"><i class="fas fa-unlink"></i></div></td>
+					</tr>
+					<tr>
+						<td>Number of Runs</td>
+						<td><input type="number" id="number-of-runs" value="5"></td>
+						<td>Cone Penalty (s)</td>
+						<td><input type="number" id="cone-penalty" value="2"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+  		<div class="setup-pane-header collapsible">
+  			Vehicles<span id="active-vehicle-count"></span>
+
+  			<div class="checkbox-container">
+				<div class="checkbox">
+					<input type="checkbox" id="show-all-vehicles"><label for="show-all-vehicles"><div class="checkbox-label">Show All Vehicles</div></label>
+				</div>
+			</div>
+  			<!-- <button id="edit-vehicles" type="button">Import Vehicle List</button> -->
+  			<!-- <input id="import-vehicle-list" type="file" style="display:none" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" /> -->
+  		</div>	
+ 		<div class="setup-pane-content" id="vehicles-content">
+ 			<div id="vehicles-table"></div>
+ 		</div>
+ 			
+ 		<div class="setup-pane-header collapsible">
+ 			Drivers<span id="driver-count"></span>
+ 			<!-- <button id="edit-drivers" type="button">Import Driver List</button> -->
+ 			<!-- <input id="import-driver-list" type="file" style="display:none" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" /> -->
+
+ 			<div class="checkbox-container">
+				<div class="checkbox">
+					<input type="checkbox" id="hide-completed-drivers"><label for="hide-completed-drivers"><div class="checkbox-label">Hide Completed Drivers</div></label>
+				</div>
+			</div>
+ 		</div>	
+ 		<div class="setup-pane-content" id="drivers-content">
+ 			<div id="drivers-table"></div>
+ 		</div>
+
+		
+		
+		
+ 	</div>
+
+ 	<!-- <div class="splitter"></div> -->
+
+ 	<div class="times-pane">
+ 		<div class="times-header">
+ 			Times
+ 			<div class="times-button add-laptime"><i class="fas fa-plus-square"></i><span class="button-tooltip">Add Lap Time<span class="triangle"></span></span></div>
+ 			<div class="button-splitter"></div>
+
+ 			<div class="times-button download-data" id="download-excel-data"><i class="fas fa-file-excel"></i><span class="button-tooltip">Download Excel File<span class="triangle"></span></span></div>
+ 			<div class="times-button import-data" id="import-data-button"><i class="fas fa-file-import"></i></i><span class="button-tooltip">Import Data<span class="triangle"></span></span></div>
+ 				<input id="import-data-input" type="file" style="display:none" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+ 			
+ 			<div class="button-splitter"></div>
+ 			<div class="times-button delete-all-times" id="delete-all-times"><i class="fas fa-eraser"></i><span class="button-tooltip">Delete All Times<span class="triangle"></span></span></div>
+ 		</div>		
+ 		<div id="times-table"></div>
+
+		<div id="modal-display"></div>
+ 	</div>
+ </div>
+
+<div class="app-footer"></div>
+</body>
+</html>

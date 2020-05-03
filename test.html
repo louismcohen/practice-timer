@@ -1,0 +1,50 @@
+<head>
+	<link rel="stylesheet" href="test.css">
+	<title>Test Interface</title>
+</head>
+
+<body>
+
+<h2>Last Custom Entry</h2>
+<table>
+	<tr>
+		<td>New Laptime</td>
+		<td id="new-laptime"></td>
+	</tr>
+	<tr>
+		<td>New Timestamp</td>
+		<td id="new-timestamp"></td>
+	</tr>
+	<tr>
+		<td>Timestamp Diff</td>
+		<td id="timestamp-diff"></td>
+	</tr>
+</table>
+
+<div class="separator"></div>
+
+<h2>Random Laptime</h2>
+<button id="generate-new-laptime">Generate New Laptime</button>
+
+<div class="separator"></div>
+
+<h2>Manual Entry</h2>
+<div id="manual-entry">
+<table>
+	<tr>
+		<td>Laptime</td>
+		<td><input type="text" id="manual-laptime" /></td>
+	</tr>
+	<tr>
+		<td>Timestamp</td>
+		<td><input type="time" step="1" id="manual-timestamp" /></td>
+	</tr>
+</table>
+
+<button id="save-manual-entry">Save Manual Entry</button>
+</div>
+
+<script src="test.js"></script>
+<script src="moment.js"></script>
+
+</body>

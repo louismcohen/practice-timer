@@ -1,0 +1,609 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	margin: 0;
+	font-size: 85%;
+}
+
+.app-header {
+	background-color: #f7f7f7;
+	vertical-align: middle;
+	box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.33);
+	position: relative;
+	padding: 10px 20px;
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+}
+
+table.header-info {
+	padding: 0;
+	margin: 0;
+	font-size: 1em;
+	border-collapse: collapse;
+	display: inline-block;
+}
+
+table.header-info > thead > tr > th {
+	font-weight: 500;
+	padding-right: 1em;
+	text-align: left;
+	white-space: nowrap;
+}
+
+table.header-info > tbody > tr > td {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	font-weight: 400;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 1.2em;
+	margin: 10px 0 10px 0;
+}
+
+/*.standard-checkbox {
+	-webkit-appearance: none;
+	background-color: #fff;
+	border: 1px solid #dbdbdb;
+	padding: 7px;
+	display: block;
+}*/
+
+.checkbox input[type="checkbox"] {
+	opacity: 0;
+}
+
+.checkbox label {
+	position: relative;
+	display: inline-block;
+	top: -18px;
+	left: -18px;
+	cursor: pointer;
+}
+
+.checkbox-label {
+	padding-left: 30px;
+}
+
+.checkbox label::before,
+.checkbox label::after {
+	position: absolute;
+	content: "";
+}
+
+.checkbox label::before {
+	height: 1em;
+	width: 1em;
+	border: 1px solid #b5b5b5;
+	left: 0px;
+	top: 0.3em;
+}
+
+.checkbox label::after {
+	height: 5px;
+	width: 9px;
+	border-left: 2px solid #4a4a4a;
+	border-bottom: 2px solid #4a4a4a;
+	transform: rotate(-45deg);
+	left: 4px;
+	top: 0.6em;
+}
+
+.checkbox input[type="checkbox"] + label::after {
+	content: none;
+}
+
+.checkbox input[type="checkbox"]:checked + label::after {
+	content: "";
+}
+
+.checkbox input[type="checkbox"]:focus + label::before, .cones-input:focus {
+	outline: none;
+}
+
+label[for="show-all-vehicles"], label[for="hide-completed-drivers"] {
+	top: 0;
+	font-size: 0.85em;
+}
+
+.main {
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+
+	xtouch-action: none;
+}
+
+.splitter { 
+	flex: 0 0 auto;
+	width: 3px;
+	cursor: col-resize;
+	height: 100%;
+	background-color: #444;
+}
+
+.setup-pane {
+	background-color: #f7f7f7;
+	border-right: 1px solid #dbdbdb;
+	padding: 63px 20px 0 20px;
+	height: 100vh;
+	min-width: 500px;
+	width: 500px;
+	position: fixed;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	display: none;
+	white-space: nowrap;
+	/*transition: 0.3s;*/
+
+	flex: 0 0 auto;
+
+}
+
+.setup-pane-header, .times-header {
+	font-weight: 300;
+	font-size: 150%;
+	margin: 20px 0 10px 0;
+	line-height: 150%;
+	user-select: none;
+}
+
+.setup-pane-header.collapsible:hover {
+	cursor: pointer;
+}
+
+.setup-pane-header button {
+	float: right;
+	background: #fff;
+	border: 1px solid #dbdbdb;
+	min-width: 100px;
+	padding: 5px 10px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+}
+
+.setup-pane-header button:hover {
+	background-color: #f7f7f7;
+}
+
+.setup-pane-header button:focus {
+	outline: none;
+	box-shadow: 0px 1px 3px inset rgba(0, 0, 0, 0.15);
+}
+
+.setup-pane-footer {
+	font-weight: 300;
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+
+.setup-pane-content#drivers-content {
+	margin-bottom: 85px;
+}
+
+.checkbox-container {
+	display: inline-block;
+	cursor: pointer;
+	float: right;
+}
+
+.times-pane {
+	padding: 0 20px;
+	text-align: left;
+	transition: margin-left 0.3s;
+
+	flex: 1 1 auto;
+	width: 100%;
+}
+
+.times-button {
+	float: right;
+	font-size: 1.5em;
+	color: #444;
+	margin-left: 0.5em;
+	position: relative;
+	transition: opacity 0.3s;
+}
+
+.times-button:hover .svg-inline--fa {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.button-splitter {
+	border-left: 1px solid #ccc;
+	width: 1px;
+	display: inline-block;
+	height: 1.5em;
+	float: right;
+	margin: 0;
+	margin-left: 0.75em;
+}
+
+.times-button .button-tooltip {
+	visibility: hidden;
+	width: 150px;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	font-size: 0.5em;
+	line-height: 1.5em;
+	height: 1.5em;
+	text-align: center;
+	border-radius: 3px;
+	padding: 5px 0px;
+	position: absolute;
+	z-index: 10;
+	bottom: 150%;
+	left: 50%;
+	margin-left: -75px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.times-button .button-tooltip .triangle {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+}
+
+.times-button:hover .button-tooltip {
+	/*visibility: visible;*/
+	/*opacity: 1;*/
+}
+
+.calculated-column {
+	/*background-color: #0072bc10;*/
+}
+
+.placeholder-text {
+	color: #bfbfbf;
+	font-style: italic;
+}
+
+.tabulator-row.tabulator-selectable:hover, .tabulator-row:hover, .tabulator-row:hover {
+	background-color: #6cc9ff26 !important;
+}
+
+.tabulator-col-title {
+	font-weight: 500;
+	color: #000;
+}
+
+.last-run {
+	background-color: #dfffb5;
+}
+
+table.nextup, table.setup-table {
+	background-color: #fff;
+	border: 1px solid #dbdbdb;
+	border-collapse: collapse;
+	text-align: left;
+	font-size: 1em;
+	position: relative;
+	width: 100%;
+}
+
+table.setup-table select {
+	width: 100%;
+	font-size: inherit;
+}
+
+table.nextup tr, table.setup-table tr, table.times-table tr {
+	border-bottom: 1px solid #dbdbdb;
+	height: 40px;
+}
+
+table.nextup > thead > tr > th, table.setup-table > thead > tr > th {
+	font-weight: 500;
+}
+
+table.nextup th, table.nextup td, table.setup-table th, table.setup-table td {
+	padding: 10px;
+}
+
+table.nextup > tbody td, table.setup-table > tbody td {
+	font-size: 1em;
+	line-height: 1em;
+}
+
+table.nextup td.nextup-pos {
+	text-align: center;
+	padding-right: 10px;
+}
+
+table.nextup tr th:nth-child(2), table.nextup tr td:nth-child(2) {
+	padding-left: 0;
+}
+
+table#settings {
+	table-layout: fixed;
+}
+
+table#settings input {
+	width: 100%;
+	border: none;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+}
+
+input {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	border: none;
+	font-size: inherit;
+}
+
+.timing-device-status-icon {
+	float: right;
+	color: #444;
+	margin-right: 0.5em;
+}
+
+.timing-device-status-icon:hover {
+	float: right;
+	opacity: 0.7;
+	margin-right: 0.5em;
+	cursor: pointer;
+}
+
+.timing-device-status-icon.disabled {
+	display: inline;
+}
+
+.timing-device-status-icon.disabled {
+	color: #bbb;
+}
+
+.timing-device-status-icon.disabled:hover {
+	color: #bbb;
+	opacity: 1;
+	cursor: default;
+}
+
+.tabulator input[type="text"] {
+	text-align: center;	
+}
+
+.tabulator {
+	border-radius: 0;
+}
+
+.tabulator .tabulator-header .tabulator-col, .tabulator-header, .tabulator-headers {
+	background-color: #f7f7f7;
+}
+
+input[type="text"] {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	border: none;
+}
+
+table.nextup input[type="text"]:focus {
+	outline: none;
+}
+
+input[type="text"]::placeholder {
+	font-style: italic;
+	color: #808080;
+}
+
+select {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	border: none;
+	-webkit-appearance: none;
+}
+
+select:focus {
+	outline: none;
+}
+
+select option {
+	padding: none;
+	-webkit-appearance: none;
+}
+
+input.custom-combobox-input {
+	padding: 0;
+	border: none !important;
+	background: transparent;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	color: inherit;
+	width: 100%;
+}
+
+input.custom-combobox-input::placeholder {
+	font-style: italic;
+}
+
+input.custom-combobox-input:focus {
+	outline: none;
+}
+
+.ui-menu.ui-autocomplete {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	font-size: 1em;
+	color: inherit;
+	background-color: rgba(255, 255, 255, 0.95);
+	box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.15);
+}
+
+table.times-table {
+	border-collapse: collapse;
+	border: 1px solid #dbdbdb;
+}
+
+table.times-table > thead {
+	background-color: #f7f7f7;
+}
+
+table.times-table > thead > tr > th {
+	vertical-align: bottom;
+}
+
+table.times-table td, table.times-table th {
+	padding: 10px;
+}
+
+.mod-column {
+	text-align: center;
+	border-left: 1px solid #dbdbdb;
+	border-right: 1px solid #dbdbdb;
+}
+
+.cones-input {
+	width: 50px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+	font-size: inherit;
+	border: none;
+	text-align: center;
+}
+
+.vehicle-column {
+	/*width: 220px;*/
+}
+
+.hamburger {
+	padding: 0 20px 0 0;
+	outline: none;
+}
+
+.hamburger-box {
+	height: 30px;
+}
+
+.fa-square, .fa-check-square {
+	font-size: 120%;
+	color: #444;
+}
+
+.fa-square:hover, .fa-check-square:hover {
+	opacity: 0.7;
+}
+
+.tabulator-cell .fa-minus-circle {
+	font-size: 120%;
+	color: #444;
+}
+
+.delete-laptime {
+	display: none;
+}
+
+.download-excel {
+	float: right;
+	color: #444;
+}
+
+/* Modal window */
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgb(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 0;
+	border: 1px solid rgba(0, 0, 0, 0.67);
+	width: 550px;
+	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.35);
+}
+
+.modal-header {
+	padding: 10px;
+	background-color: #0072bc;
+	color: white;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.modal-header .modal-header-text {
+	display: inline-block;
+}
+
+.modal-body {
+	padding: 10px;
+	font-size: 1em;
+}
+
+.modal-body p {
+	margin: 0;
+}
+
+@keyframes flash-red {
+	0% {
+		background-color: inherit;
+	}
+
+	50% {
+		background-color: #ffb5b5;
+	}
+
+	100% {
+		background-color: inherit;
+	}
+}
+
+.flash-red {
+	animation: flash 1s;
+	animation-iteration-count: 5;
+}
+
+.ui-widget, .ui-widget button {
+	font-family: inherit;
+}
+
+.ui-dialog {
+	padding: 0;
+}
+
+.ui-widget-overlay {
+	background: #000;
+	opacity: 0.4;
+}
+
+.ui-widget-header {
+	background-color: #f7f7f7;
+	border: none;
+	font-size: 1.2em;
+}
+
+.ui-dialog-titlebar {
+	background-color: #0072bc;
+	color: #fff;
+	font-size: 1.2em;
+}
+
+.ui-widget.ui-widget-content {
+	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.35);
+	border: 1px solid rgba(0, 0, 0, 0.67);
+}
+
+.ui-corner-all {
+	border-radius: 0;
+}
+
+.close-button {
+	color: #fff;
+	float: right;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.close-button:hover, .close-button:focus {
+	color: #c7c7c7;
+	text-decoration: none;
+	cursor: pointer;
+}
